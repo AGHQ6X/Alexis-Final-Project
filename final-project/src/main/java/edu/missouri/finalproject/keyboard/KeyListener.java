@@ -24,11 +24,11 @@ public class KeyListener extends KeyAdapter
 		// Create an Enum map 
 		this.isPressed = new EnumMap<Key, Boolean>(Key.class);
 		
-		// Loop through the new map
-		for (Map.Entry<Key, Boolean> entry : this.isPressed.entrySet())
+		// Loop through all keys
+		for (Key key : Key.values())
 		{
 			// Set every entry to false (no keys pressed by default)
-			entry.setValue(Boolean.FALSE);
+			this.isPressed.put(key, Boolean.FALSE);
 		}
 	}
 	
@@ -40,8 +40,6 @@ public class KeyListener extends KeyAdapter
 	 */
 	public boolean isKeyPressed(Key key)
 	{
-		System.out.println("Key pressed.");
-		
 		// Return the boolean from the Enum
 		return this.isPressed.get(key);
 	}
