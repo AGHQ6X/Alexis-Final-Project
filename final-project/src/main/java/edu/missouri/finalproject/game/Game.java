@@ -38,9 +38,14 @@ public class Game extends JPanel implements ActionListener
 	private Window window;
 	
 	/**
-	 * 
+	 * The key listener that keeps track of the pressed status of important keys.
 	 */
 	private KeyListener keyListener;
+	
+	/**
+	 * The collection of objects that are on the board.
+	 */
+	private GameObjects objects;
 	
 	/**
 	 * The constructor for a game object. This creates a window and gives this object
@@ -67,6 +72,9 @@ public class Game extends JPanel implements ActionListener
 		// Create a game key listener and add it to this panel
 		this.keyListener = new KeyListener();
 		this.addKeyListener(this.keyListener);
+		
+		// Create game objects
+		this.objects = new GameObjects();
 	}
 	
 	/**
@@ -100,7 +108,7 @@ public class Game extends JPanel implements ActionListener
 		this.lastFrameTime = newFrameTime;
 		
 		// Tell the controller and its children to update the model
-		this.update(delta);
+		this.objects.update(delta, this.keyListener);
 		
 		// Tell the panel to paint everything
 		this.repaint();
@@ -119,28 +127,8 @@ public class Game extends JPanel implements ActionListener
     	super.paintComponent(graphics);
     	
     	// Tell the controller to draw children
-    	this.render(graphics);
+    	this.objects.render(graphics);
     }
-	
-	/**
-	 * Called every frame in order to tell all child controllers to update game logic.
-	 * 
-	 * @param delta The ratio of actual frame duration to ideal frame duration.
-	 */
-	public void update(double delta)
-	{
-		// TODO
-	}
-	
-	/**
-	 * Called every paint call in order to tell all child controllers to paint.
-	 * 
-	 * @param graphics The graphics object to pass to children.
-	 */
-	public void render(Graphics graphics)
-	{
-		// TODO
-	}
 	
 	/**
 	 * The Main method; it creates and runs a GameController object.
