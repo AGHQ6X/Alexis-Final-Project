@@ -1,6 +1,7 @@
 package edu.missouri.finalproject.game;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -26,6 +27,16 @@ public class Game extends JPanel implements ActionListener
 	 * The minimum amount of time a frame should take for 60 FPS.
 	 */
 	private static final long idealFrameTime = 1000000000 / 60;
+	
+	/**
+	 * The default height to make the window.
+	 */
+	private static final int pannelWidth = 960;
+	
+	/**
+	 * The default width to make the window.
+	 */
+	private static final int pannelHeight = 720;
 	
 	/**
 	 * The point in time where the previous frame started.
@@ -58,6 +69,10 @@ public class Game extends JPanel implements ActionListener
 				
 		// Add the game view as a JPanel
 		this.window.add(this);
+		
+		//Set the size of the game
+		this.setPreferredSize(new Dimension(Game.pannelWidth, Game.pannelHeight));
+		this.window.pack();
 
 		// Set the background color for this panel
 		this.setBackground(Color.BLACK);

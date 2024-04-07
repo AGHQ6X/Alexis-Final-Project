@@ -17,25 +17,12 @@ public class Window extends JFrame
 	private static final String WINDOW_TITLE = "Two Player Pong";
 	
 	/**
-	 * The default width to make the window.
-	 */
-	private static final int WINDOW_HEIGHT = 720;
-	
-	/**
-	 * The default height to make the window.
-	 */
-	private static final int WINDOW_WIDTH = 960;
-	
-	/**
 	 * Constructs a frame built for this Pong implementation.
 	 */
 	public Window(Game view)
 	{
 		// Set the Window title
 		this.setTitle(WINDOW_TITLE);
-		
-		// Set the dimensions of the window
-		this.setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
 		
 		// Set the closing operation
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
