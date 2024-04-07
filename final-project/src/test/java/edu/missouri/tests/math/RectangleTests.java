@@ -54,6 +54,38 @@ public class RectangleTests
 	}
 	
 	@Test
+	@DisplayName("Test the Rectangle translation methods")
+	void testTranslation()
+	{
+		// Create a default rectangle and use setters to set values
+		Rectangle rect = new Rectangle();
+		
+		// Translate the rectangle
+		rect.translateX(2.0);
+		rect.translateY(1.0);
+		
+		// Assert that all values match what it should
+		Assertions.assertEquals(rect.getX(), 2.0);
+		Assertions.assertEquals(rect.getY(), 1.0);
+		
+		// Translate the rectangle
+		rect.translateX(2.0);
+		rect.translateY(1.0);
+
+		// Assert that all values match what it should
+		Assertions.assertEquals(rect.getX(), 4.0);
+		Assertions.assertEquals(rect.getY(), 2.0);
+		
+		// Translate the rectangle
+		rect.translateX(-5.0);
+		rect.translateY(1.0);
+
+		// Assert that all values match what it should
+		Assertions.assertEquals(rect.getX(), -1.0);
+		Assertions.assertEquals(rect.getY(), 3.0);
+	}
+	
+	@Test
 	@DisplayName("Test the Rectangle 'boolean withinRectangleTop(Rectangle)' method")
 	void testWithinRectangleTop()
 	{

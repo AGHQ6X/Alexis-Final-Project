@@ -33,6 +33,36 @@ public class Rectangle extends Rectangle2D.Double
 	}
 	
 	/**
+	 * Translate the X of this.
+	 * 
+	 * @param value The X to translate this by.
+	 * @return Returns {@code this}.
+	 */
+	public Rectangle translateX(double value)
+	{
+		// Set the value
+		this.x += value;
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Translate the Y of this.
+	 * 
+	 * @param value The Y to translate this by.
+	 * @return Returns {@code this}.
+	 */
+	public Rectangle translateY(double value)
+	{
+		// Set the value
+		this.y += value;
+
+		// Return this
+		return this;
+	}
+	
+	/**
 	 * Set the X of the upper-left corner of this.
 	 * 
 	 * @param value The new X of the upper-left corner of this.

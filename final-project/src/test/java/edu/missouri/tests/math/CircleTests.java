@@ -57,6 +57,38 @@ public class CircleTests
 	}
 	
 	@Test
+	@DisplayName("Test the Circle translation methods")
+	void testTranslation()
+	{
+		// Create a default rectangle and use setters to set values
+		Circle circle = new Circle();
+		
+		// Translate the rectangle
+		circle.translateX(0.0);
+		circle.translateY(2.0);
+		
+		// Assert that all values match what it should
+		Assertions.assertEquals(circle.getX(), 0.0);
+		Assertions.assertEquals(circle.getY(), 2.0);
+		
+		// Translate the rectangle
+		circle.translateX(2.0);
+		circle.translateY(1.0);
+
+		// Assert that all values match what it should
+		Assertions.assertEquals(circle.getX(), 2.0);
+		Assertions.assertEquals(circle.getY(), 3.0);
+		
+		// Translate the rectangle
+		circle.translateX(-2.0);
+		circle.translateY(-1.0);
+
+		// Assert that all values match what it should
+		Assertions.assertEquals(circle.getX(), 0.0);
+		Assertions.assertEquals(circle.getY(), 2.0);
+	}
+	
+	@Test
 	@DisplayName("Test the Circle 'boolean withinRectangleTop(Rectangle)' method")
 	void testWithinRectangleTop()
 	{
