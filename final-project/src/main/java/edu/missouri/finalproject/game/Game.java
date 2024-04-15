@@ -117,7 +117,7 @@ public class Game extends JPanel implements ActionListener
 		long newFrameTime = System.nanoTime();
 		
 		// Calculate the ratio of actual frame duration to ideal frame duration
-		double delta = (this.lastFrameTime - newFrameTime) / Game.idealFrameTime;
+		double delta = (newFrameTime - this.lastFrameTime) / Game.idealFrameTime;
 		
 		// Reset the timer
 		this.lastFrameTime = newFrameTime;

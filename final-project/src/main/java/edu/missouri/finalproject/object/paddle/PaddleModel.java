@@ -12,7 +12,6 @@ public class PaddleModel
 	/**
 	 * The stored starting position to reset back to.
 	 */
-	@SuppressWarnings("unused")
 	private double startX, startY;
 	
 	/**
@@ -65,49 +64,49 @@ public class PaddleModel
 		{
 			// Move up
 			this.velX = 0.000;
-			this.velY = 1.000;
+			this.velY = -1.000;
 		} 
 		else if (down && !up && (left == right))
 		{
 			// Move down
 			this.velX = 0.000;
-			this.velY = -1.000;
+			this.velY = 1.000;
 		}
 		else if (left && !right && (up == down))
 		{
 			// Move left
-			this.velX = 1.000;
+			this.velX = -1.000;
 			this.velY = 0.000;
 		}
 		else if (right && !left && (up == down))
 		{
 			// Move right
-			this.velX = -1.000;
+			this.velX = 1.000;
 			this.velY = 0.000;
 		}
 		else if (up && left && !down && !right)
 		{
 			// Move up and left
-			this.velX = 0.707;
-			this.velY = 0.707;
+			this.velX = -0.707;
+			this.velY = -0.707;
 		}
 		else if (up && right && !down && !left)
 		{
 			// Move up and right
-			this.velX = -0.707;
-			this.velY = 0.707;
+			this.velX = 0.707;
+			this.velY = -0.707;
 		}
 		else if (down && left && !up && !right)
 		{
 			// Move down and left
-			this.velX = 0.707;
-			this.velY = -0.707;
+			this.velX = -0.707;
+			this.velY = 0.707;
 		}
 		else if (down && right && !up && !left)
 		{
 			// Move down and right
-			this.velX = -0.707;
-			this.velY = -0.707;
+			this.velX = 0.707;
+			this.velY = 0.707;
 		}
 		else
 		{
@@ -158,13 +157,90 @@ public class PaddleModel
 	}
 	
 	/**
+	 * Get the starting X position to set the position on reset.
+	 * 
+	 * @return The starting X position.
+	 */
+	public double getStartX()
+	{
+		// Return startX
+		return this.startX;
+	}
+	
+	/**
+	 * Get the starting Y position to set the position on reset.
+	 * 
+	 * @return The starting Y position.
+	 */
+	public double getStartY()
+	{
+		// Return startY
+		return this.startY;
+	}
+	
+	/**
+	 * Get the current X position.
+	 * 
+	 * @return The current X position.
+	 */
+	public double getPosX()
+	{
+		// Return hitbox X
+		return this.hitbox.getX();
+	}
+	
+	/**
+	 * Get the current Y position.
+	 * 
+	 * @return The current Y position.
+	 */
+	public double getPosY()
+	{
+		// Return hitbox Y
+		return this.hitbox.getY();
+	}
+	
+	/**
+	 * Get the velocity in the X direction.
+	 * 
+	 * @return The X velocity.
+	 */
+	public double getVelX()
+	{
+		// Return startX
+		return this.velX;
+	}
+	
+	/**
+	 * Get the velocity in the Y direction.
+	 * 
+	 * @return The Y velocity.
+	 */
+	public double getVelY()
+	{
+		// Return startX
+		return this.velY;
+	}
+	
+	/**
 	 * Get the {@code Rectangle} that holds the paddle position and size.
 	 * 
 	 * @return The {@code Rectangle} that holds the paddle position and size.
 	 */
 	public Rectangle getHitbox()
 	{
-		// Return paddleBox
+		// Return hitbox
 		return this.hitbox;
+	}
+	
+	/**
+	 * Get the {@code Rectangle} that holds the paddle boundaries.
+	 * 
+	 * @return The {@code Rectangle} that holds the paddle boundaries.
+	 */
+	public Rectangle getBound()
+	{
+		// Return bound
+		return this.bound;
 	}
 }
