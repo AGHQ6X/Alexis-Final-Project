@@ -7,7 +7,7 @@ public class PaddleModel
 	/**
 	 * The speed of the paddle in pixels per 1/60th second.
 	 */
-	private static final double paddleSpeed = 6.0;
+	private static final double paddleSpeed = 12.0;
 	
 	/**
 	 * The stored starting position to reset back to.
@@ -114,6 +114,16 @@ public class PaddleModel
 			this.velX = 0.0;
 			this.velY = 0.0;
 		}
+	}
+	
+	/**
+	 * Reset the Paddle to default position.
+	 */
+	public void reset()
+	{
+		// Reset position
+		this.hitbox.setX(this.startX);
+		this.hitbox.setY(this.startY);
 	}
 	
 	/**

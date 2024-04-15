@@ -34,6 +34,15 @@ public class PaddleController
 	}
 	
 	/**
+	 * Reset the Paddle to default position.
+	 */
+	public void reset()
+	{
+		// Reset the Model
+		this.model.reset();
+	}
+	
+	/**
 	 * Called every frame to update Paddle logic.
 	 * 
 	 * @param delta The ratio of actual frame duration to ideal frame duration.
@@ -127,5 +136,16 @@ public class PaddleController
 		
 		// Return this
 		return this;
+	}
+	
+	/**
+	 * Get the {@code Rectangle} that holds the paddle position and size.
+	 * 
+	 * @return The {@code Rectangle} that holds the paddle position and size.
+	 */
+	public Rectangle getHitbox()
+	{
+		// Return hitbox
+		return this.model.getHitbox();
 	}
 }
