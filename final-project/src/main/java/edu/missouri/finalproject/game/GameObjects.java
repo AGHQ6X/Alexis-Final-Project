@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import edu.missouri.finalproject.keyboard.Key;
 import edu.missouri.finalproject.keyboard.KeyListener;
 import edu.missouri.finalproject.math.Rectangle;
+import edu.missouri.finalproject.object.ball.BallController;
 import edu.missouri.finalproject.object.paddle.PaddleController;
 
 /**
@@ -21,6 +22,11 @@ public class GameObjects
 	 * The object to control the player 2 paddle.
 	 */
 	private PaddleController playerTwo;
+	
+	/**
+	 * The object to control a bouncing ball.
+	 */
+	private BallController ball;
 	
 	/**
 	 * Generate game objects.
@@ -42,6 +48,21 @@ public class GameObjects
 				.setKeyDown(Key.PLAYER_TWO_DOWN)
 				.setKeyLeft(Key.PLAYER_TWO_LEFT)
 				.setKeyRight(Key.PLAYER_TWO_RIGHT);
+		
+		// Create ball
+		Rectangle ballBound = new Rectangle(0.0, 120.0, 960.0, 600.0);
+		this.ball = new BallController(440.0, 380.0, ballBound);
+	}
+	
+	/**
+	 * Reset paddles and ball to default location and velocities.
+	 */
+	private void reset()
+	{
+		// Reset all
+		this.playerOne.reset();
+		this.playerTwo.reset();
+		this.ball.reset();
 	}
 	
 	/**
@@ -53,10 +74,24 @@ public class GameObjects
 	public void update(double delta, KeyListener keys)
 	{
 		// Update player 1
-		playerOne.update(delta, keys);
+		this.playerOne.update(delta, keys);
 		
 		// Update player 2
-		playerTwo.update(delta, keys);
+		this.playerTwo.update(delta, keys);
+		
+		// Get paddle hitboxes as Rectangles
+		Rectangle hitboxOne = this.playerOne.getHitbox();
+		Rectangle hitboxTwo = this.playerTwo.getHitbox();
+		
+		// Update the ball and get score
+		int score = this.ball.update(delta, hitboxOne, hitboxTwo);
+		
+		// Reset objects if someone scored
+		if (score != 0)
+		{
+			// Set all objects to reset
+			this.reset();
+		}
 	}
 	
 	/**
@@ -67,9 +102,12 @@ public class GameObjects
 	public void render(Graphics graphics)
 	{
 		// Render player 1
-		playerOne.render(graphics);
+		this.playerOne.render(graphics);
 		
 		// Render player 2
-		playerTwo.render(graphics);
+		this.playerTwo.render(graphics);
+		
+		// Render the ball
+		this.ball.render(graphics);
 	}
 }
