@@ -7,12 +7,18 @@ import edu.missouri.finalproject.keyboard.KeyListener;
 import edu.missouri.finalproject.math.Rectangle;
 import edu.missouri.finalproject.object.ball.BallController;
 import edu.missouri.finalproject.object.paddle.PaddleController;
+import edu.missouri.finalproject.object.scoreboard.ScoreboardController;
 
 /**
  * Contains the game board objects for {@code Game}.
  */
 public class GameObjects
 {
+	/**
+	 * The scoreboard for the game.
+	 */
+	private ScoreboardController scoreboard;
+	
 	/**
 	 * The object to control the player 1 paddle.
 	 */
@@ -33,6 +39,9 @@ public class GameObjects
 	 */
 	public GameObjects()
 	{
+		// Create a scoreboard
+		this.scoreboard = new ScoreboardController();
+		
 		// Create player 1
 		Rectangle playerOneBound = new Rectangle(0.0, 120.0, 240.0, 600.0);
 		this.playerOne = new PaddleController(40.0, 320.0, playerOneBound)
@@ -92,6 +101,20 @@ public class GameObjects
 			// Set all objects to reset
 			this.reset();
 		}
+		
+		// Check for player 1 score
+		if (score == 1)
+		{
+			// Increment player 1 score
+			this.scoreboard.incrementPlayerOneScore();
+		}
+		
+		// Check for player 2 score
+		if (score == 2)
+		{
+			// Increment player 2 score
+			this.scoreboard.incrementPlayerTwoScore();
+		}
 	}
 	
 	/**
@@ -101,6 +124,9 @@ public class GameObjects
 	 */
 	public void render(Graphics graphics)
 	{
+		// Render scoreboard
+		this.scoreboard.render(graphics);
+		
 		// Render player 1
 		this.playerOne.render(graphics);
 		
