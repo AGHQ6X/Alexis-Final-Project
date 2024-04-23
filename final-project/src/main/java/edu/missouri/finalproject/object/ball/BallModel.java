@@ -11,7 +11,7 @@ public class BallModel
 	private static final double startSpeed = 12.0;
 	
 	/**
-	 * The speed of the ball in pixels per 1/60th second.
+	 * The multiplier to cause an increasing speed bounce.
 	 */
 	private static final double bounceMod = -1.05;
 	
@@ -48,7 +48,7 @@ public class BallModel
 		this.randomizeVelocity();
 		
 		// Set hitbox to given position with set dimensions
-		this.hitbox = new Circle(x, y, 40.0);
+		this.hitbox = new Circle(x, y, 80.0);
 		
 		// Set bounding box to screen
 		this.bound = bound;
@@ -103,14 +103,51 @@ public class BallModel
 	}
 	
 	/**
-	 * Bounce off of a Rectangle. It should look at which side it should bounce off of.
+	 * Bounce off of a Rectangle. It looks at which side it should bounce off of.
 	 * 
 	 * @param rect The rectangle to bounce off of.
 	 */
-	private void bounceRectangle(Rectangle rect)
+	public void bounceRectangle(Rectangle rect)
 	{
-		// TODO Write a bounce algorithm
-		this.velX *= BallModel.bounceMod;
+		// Detect if the ball touches the top
+		boolean top = this.hitbox.intersects(rect.getMinX(),
+											 rect.getMinY(), 
+											 rect.getWidth(), 
+											 0.5);
+		
+		// Detect if the ball touches the bottom
+		boolean bottom = this.hitbox.intersects(rect.getMinX(),
+				 								rect.getMaxY(), 
+				 								rect.getWidth(), 
+				 								0.5);
+		
+		// Detect if the ball touches the left
+		boolean left = this.hitbox.intersects(rect.getMinX(),
+				 							  rect.getMinY(), 
+				 							  0.5, 
+				 							  rect.getHeight());
+		
+		// Detect if the ball touches the right
+		boolean right = this.hitbox.intersects(rect.getMaxX(),
+				  							   rect.getMinY(), 
+				  							   0.5, 
+				  							   rect.getHeight());
+		
+		// Check if it needs to bounce vertically
+		if ((top && !bottom && this.velY > 0.0) ||
+			(bottom && !top && this.velY < 0.0))
+		{
+			// Bounce vertically
+			this.velY *= BallModel.bounceMod;
+		}
+		
+		// Check if it needs to bounce horizontally
+		if ((left && !right && this.velX > 0.0) ||
+			(right && !left && this.velX < 0.0))
+		{
+			// Bounce horizontally
+			this.velX *= BallModel.bounceMod;
+		}
 	}
 	
 	/**
