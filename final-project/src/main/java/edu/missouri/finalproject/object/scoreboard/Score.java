@@ -30,12 +30,28 @@ public class Score
 	}
 	
 	/**
+	 * Setter for the total score.
+	 * 
+	 * @param score The new score to set to.
+	 * @return Returns {@code this}.
+	 */
+	public Score setScore(int score)
+	{
+		// Set score
+		this.score = score;
+		
+		// Return this
+		return this;
+	}
+	
+	/**
 	 * Getter for the total score.
 	 * 
 	 * @return The current score total.
 	 */
 	public int getScore()
 	{
+		// Return score
 		return this.score;
 	}
 	
