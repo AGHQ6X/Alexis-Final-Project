@@ -113,24 +113,24 @@ public class BallModel
 		boolean top = this.hitbox.intersects(rect.getMinX(),
 											 rect.getMinY(), 
 											 rect.getWidth(), 
-											 0.5);
+											 0.125);
 		
 		// Detect if the ball touches the bottom
 		boolean bottom = this.hitbox.intersects(rect.getMinX(),
-				 								rect.getMaxY(), 
+				 								rect.getMaxY() - 0.125, 
 				 								rect.getWidth(), 
-				 								0.5);
+				 								0.125);
 		
 		// Detect if the ball touches the left
 		boolean left = this.hitbox.intersects(rect.getMinX(),
 				 							  rect.getMinY(), 
-				 							  0.5, 
+				 							  0.125, 
 				 							  rect.getHeight());
 		
 		// Detect if the ball touches the right
-		boolean right = this.hitbox.intersects(rect.getMaxX(),
+		boolean right = this.hitbox.intersects(rect.getMaxX() - 0.125,
 				  							   rect.getMinY(), 
-				  							   0.5, 
+				  							   0.125, 
 				  							   rect.getHeight());
 		
 		// Check if it needs to bounce vertically

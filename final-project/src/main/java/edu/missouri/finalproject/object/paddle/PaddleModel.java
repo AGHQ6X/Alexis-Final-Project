@@ -43,7 +43,7 @@ public class PaddleModel
 		this.velY = 0.0;
 		
 		// Set hitbox to given position with set dimensions
-		this.hitbox = new Rectangle(x, y, 20.0, 200.0);
+		this.hitbox = new Rectangle(x, y, 40.0, 200.0);
 		
 		// Set bounding box to given Rectangle
 		this.bound = bound;

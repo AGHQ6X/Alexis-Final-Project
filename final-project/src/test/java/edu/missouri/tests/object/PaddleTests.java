@@ -13,7 +13,7 @@ public class PaddleTests
 	void testConstructor()
 	{
 		// Goal hitbox and bound
-		Rectangle hitbox = new Rectangle(5.0, 6.0, 20.0, 200.0);
+		Rectangle hitbox = new Rectangle(5.0, 6.0, 40.0, 200.0);
 		Rectangle bound = new Rectangle(0.0, 0.0, 300.0, 300.0);
 		
 		// Model created with the constructor to test

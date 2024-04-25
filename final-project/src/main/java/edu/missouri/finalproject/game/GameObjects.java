@@ -52,7 +52,7 @@ public class GameObjects
 		
 		// Create player 2
 		Rectangle playerTwoBound = new Rectangle(720.0, 120.0, 240.0, 600.0);
-		this.playerTwo = new PaddleController(900.0, 320.0, playerTwoBound)
+		this.playerTwo = new PaddleController(880.0, 320.0, playerTwoBound)
 				.setKeyUp(Key.PLAYER_TWO_UP)
 				.setKeyDown(Key.PLAYER_TWO_DOWN)
 				.setKeyLeft(Key.PLAYER_TWO_LEFT)

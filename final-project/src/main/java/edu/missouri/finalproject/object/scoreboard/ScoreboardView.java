@@ -92,9 +92,9 @@ public class ScoreboardView
 		this.renderDigit(graphics, 380, 20, playerOne.getScoreDigitThree());
 		
 		// Draw player 2 score
-		this.renderDigit(graphics, 520, 20, playerTwo.getScoreDigitOne());
-		this.renderDigit(graphics, 600, 20, playerTwo.getScoreDigitTwo());
-		this.renderDigit(graphics, 680, 20, playerTwo.getScoreDigitThree());
+		this.renderDigit(graphics, 500, 20, playerTwo.getScoreDigitOne());
+		this.renderDigit(graphics, 580, 20, playerTwo.getScoreDigitTwo());
+		this.renderDigit(graphics, 660, 20, playerTwo.getScoreDigitThree());
 		
 		// Set the drawing color
 		graphics.setColor(Color.WHITE);
