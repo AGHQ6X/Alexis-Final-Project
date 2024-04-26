@@ -13,7 +13,7 @@ public class BallModel
 	/**
 	 * The multiplier to cause an increasing speed bounce.
 	 */
-	private static final double bounceMod = -1.05;
+	private static final double bounceMod = 1.02;
 	
 	/**
 	 * The stored starting position to reset back to.
@@ -102,6 +102,19 @@ public class BallModel
 		this.randomizeVelocity();
 	}
 	
+	private void bounceHorizontally()
+	{
+		this.velX *= -BallModel.bounceMod;
+		this.velY *= BallModel.bounceMod;
+	}
+	
+	private void bounceVertically()
+	{
+		// Bounce vertically
+		this.velX *= BallModel.bounceMod;
+		this.velY *= -BallModel.bounceMod;
+	}
+	
 	/**
 	 * Bounce off of a Rectangle. It looks at which side it should bounce off of.
 	 * 
@@ -133,20 +146,88 @@ public class BallModel
 				  							   0.125, 
 				  							   rect.getHeight());
 		
-		// Check if it needs to bounce vertically
-		if ((top && !bottom && this.velY > 0.0) ||
-			(bottom && !top && this.velY < 0.0))
+		// Check if the ball is touching the top
+		if (top && !bottom)
 		{
-			// Bounce vertically
-			this.velY *= BallModel.bounceMod;
+			// Check if velocity needs to be changed
+			if (this.velY > 0.0)
+			{
+				// Bounce vertically
+				this.bounceVertically();
+			}
+			
+			// Move if not on corner
+			if (!left && !right)
+			{
+				// Check how far into the rectangle the ball is
+				double diff = this.hitbox.getMaxY() - rect.getMinY();
+
+				// Mid-frame bounce
+				this.hitbox.translateY(-diff);
+			}
 		}
 		
-		// Check if it needs to bounce horizontally
-		if ((left && !right && this.velX > 0.0) ||
-			(right && !left && this.velX < 0.0))
+		// Check if the ball is touching the bottom
+		if (bottom && !top)
 		{
-			// Bounce horizontally
-			this.velX *= BallModel.bounceMod;
+			// Check if velocity needs to be changed
+			if (this.velY < 0.0)
+			{
+				// Bounce vertically
+				this.bounceVertically();
+			}
+			
+			// Move if not on corner
+			if (!left && !right)
+			{
+				// Check how far into the rectangle the ball is
+				double diff = this.hitbox.getMinY() - rect.getMaxY();
+
+				// Mid-frame bounce
+				this.hitbox.translateY(-diff);
+			}
+		}
+		
+		// Check if the ball is touching the left
+		if (left && !right)
+		{
+			// Check if velocity needs to be changed
+			if ( this.velX > 0.0)
+			{
+				// Bounce horizontally
+				this.bounceHorizontally();
+			}
+
+			// Move if not on corner
+			if (!top && !bottom)
+			{
+				// Check how far into the rectangle the ball is
+				double diff = this.hitbox.getMaxX() - rect.getMinX();
+	
+				// Mid-frame bounce
+				this.hitbox.translateX(-diff);
+			}
+		}
+			
+		// Check if the ball is touching the right
+		if (right && !left)
+		{
+			// Check if velocity needs to be changed
+			if ( this.velX < 0.0)
+			{
+				// Bounce horizontally
+				this.bounceHorizontally();
+			}
+
+			// Move if not on corner
+			if (!top && !bottom)
+			{
+				// Check how far into the rectangle the ball is
+				double diff = this.hitbox.getMinX() - rect.getMaxX();
+
+				// Mid-frame bounce
+				this.hitbox.translateX(-diff);
+			}
 		}
 	}
 	
@@ -154,29 +235,13 @@ public class BallModel
 	 * Called every frame to update Ball logic.
 	 * 
 	 * @param delta The ratio of actual frame duration to ideal frame duration.
-	 * @param rectOne The hitbox for player 1.
-	 * @param rectTwo The hitbox for player 2.
 	 * @return Returns 0 if nobody scored or the player number of who scored.
 	 */
-	public int update(double delta, Rectangle rectOne, Rectangle rectTwo)
+	public int update(double delta)
 	{
 		// Translate the paddle
 		this.hitbox.translateX(velX * delta * BallModel.startSpeed);
 		this.hitbox.translateY(velY * delta * BallModel.startSpeed);
-		
-		//Check if the ball should bounce off paddle 1
-		if (this.hitbox.intersects(rectOne))
-		{
-			// It intersects paddle 1, so the ball needs to bounce
-			this.bounceRectangle(rectOne);
-		}
-		
-		//Check if the ball should bounce off paddle 2
-		if (this.hitbox.intersects(rectTwo))
-		{
-			// It intersects paddle 2, so the ball needs to bounce
-			this.bounceRectangle(rectTwo);
-		}
 		
 		// Check if the ball needs to bounce off of the ceiling
 		if (this.hitbox.withinRectangleTop(this.bound) == false)
@@ -184,8 +249,15 @@ public class BallModel
 			// Check if the ball is moving upwards
 			if (this.velY < 0.0)
 			{
-				this.velY *= BallModel.bounceMod;
+				// Bounce vertically
+				this.bounceVertically();
 			}
+			
+			// Check how far out of bounds the ball is
+			double diff = this.hitbox.getMinY() - this.bound.getMinY();
+			
+			// Mid-frame bounce
+			this.hitbox.translateY(-diff);
 		}
 		
 		// Check if the ball needs to bounce off of the floor
@@ -194,8 +266,15 @@ public class BallModel
 			// Check if the ball is moving downwards
 			if (this.velY > 0.0)
 			{
-				this.velY *= BallModel.bounceMod;
+				// Bounce vertically
+				this.bounceVertically();
 			}
+			
+			// Check how far out of bounds the ball is
+			double diff = this.hitbox.getMaxY() - this.bound.getMaxY();
+
+			// Mid-frame bounce
+			this.hitbox.translateY(-diff);
 		}
 		
 		// Check who scored

@@ -37,17 +37,27 @@ public class BallController
 	}
 	
 	/**
+	 * Check if a bounce is needed off of a {@code Rectangle} and bounce 
+	 * the ball off of it if so.
+	 * 
+	 * @param rect The rectangle to check and to possibly bounce off of.
+	 */
+	public void checkBounce(Rectangle rect)
+	{
+		// Bounce off 
+		this.model.bounceRectangle(rect);
+	}
+	
+	/**
 	 * Called every frame to update Paddle logic.
 	 * 
 	 * @param delta The ratio of actual frame duration to ideal frame duration.
-	 * @param rectOne The hitbox for player 1.
-	 * @param rectTwo The hitbox for player 2.
 	 * @return Returns 0 if nobody scored or the player number of who scored.
 	 */
-	public int update(double delta, Rectangle rectOne, Rectangle rectTwo)
+	public int update(double delta)
 	{
-		// Update the model 
-		return this.model.update(delta, rectOne, rectTwo);
+		// Update the model
+		return this.model.update(delta);
 	}
 	
 	/**

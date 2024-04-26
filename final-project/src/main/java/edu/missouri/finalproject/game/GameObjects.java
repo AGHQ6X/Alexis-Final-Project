@@ -88,12 +88,12 @@ public class GameObjects
 		// Update player 2
 		this.playerTwo.update(delta, keys);
 		
-		// Get paddle hitboxes as Rectangles
-		Rectangle hitboxOne = this.playerOne.getHitbox();
-		Rectangle hitboxTwo = this.playerTwo.getHitbox();
+		// Check if paddles need to bounce 
+		this.ball.checkBounce(this.playerOne.getHitbox());
+		this.ball.checkBounce(this.playerTwo.getHitbox());
 		
 		// Update the ball and get score
-		int score = this.ball.update(delta, hitboxOne, hitboxTwo);
+		int score = this.ball.update(delta);
 		
 		// Reset objects if someone scored
 		if (score != 0)
