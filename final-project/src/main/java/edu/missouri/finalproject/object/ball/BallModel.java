@@ -104,6 +104,7 @@ public class BallModel
 	
 	private void bounceHorizontally()
 	{
+		// Bounce horizontally
 		this.velX *= -BallModel.bounceMod;
 		this.velY *= BallModel.bounceMod;
 	}

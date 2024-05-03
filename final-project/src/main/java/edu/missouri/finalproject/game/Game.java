@@ -65,7 +65,7 @@ public class Game extends JPanel implements ActionListener
 	private Game()
 	{
 		// Create a new window
-		this.window = new Window(this);
+		this.window = new Window();
 				
 		// Add the game view as a JPanel
 		this.window.add(this);

@@ -7,7 +7,6 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-import edu.missouri.finalproject.game.Game;
 import edu.missouri.finalproject.object.scoreboard.ScoreboardView;
 
 public class Window extends JFrame
@@ -25,7 +24,7 @@ public class Window extends JFrame
 	/**
 	 * Constructs a frame built for this Pong implementation.
 	 */
-	public Window(Game view)
+	public Window()
 	{
 		// Set the Window title
 		this.setTitle(WINDOW_TITLE);

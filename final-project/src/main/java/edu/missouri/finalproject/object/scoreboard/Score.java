@@ -18,8 +18,10 @@ public class Score
 	
 	/**
 	 * Increment the score if possible.
+	 * 
+	 * @return Returns {@code this}.
 	 */
-	public void incrementScore()
+	public Score incrementScore()
 	{
 		// Check that the score will be displayable
 		if (this.score < 999)
@@ -27,6 +29,9 @@ public class Score
 			// Increment the score
 			this.score++;
 		}
+		
+		// Return this
+		return this;
 	}
 	
 	/**
