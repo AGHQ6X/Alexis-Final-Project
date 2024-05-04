@@ -18,6 +18,11 @@ public enum Key
 	PLAYER_TWO_RIGHT(KeyEvent.VK_L);
 	
 	/**
+	 * Store the bind for the key
+	 */
+	private int bind;
+	
+	/**
 	 * A subclass to store the map in.
 	 */
 	private class KeyMap
@@ -33,6 +38,9 @@ public enum Key
 	 */
 	private Key(int bind)
 	{
+		// Store the bind
+		this.bind = bind;
+		
 		// Add the key to the map
 		KeyMap.map.put(Integer.valueOf(bind), this);
 	}
@@ -45,7 +53,18 @@ public enum Key
 	 */
 	public static Key getKey(int key)
 	{
-		// Return the key 
+		// Return the key from the map
 		return KeyMap.map.get(key);
+	}
+	
+	/**
+	 * Gets the bind integer code 
+	 * 
+	 * @return The KeyEvent key
+	 */
+	public int getBind()
+	{
+		// Return the key bind
+		return this.bind;
 	}
 }

@@ -13,6 +13,7 @@ public class KeyTests
 	@DisplayName("Test player 1 key binds")
 	void testPlayerOneBinds()
 	{
+		// Check player 1
 		Assertions.assertEquals(Key.getKey(KeyEvent.VK_W), Key.PLAYER_ONE_UP);
 		Assertions.assertEquals(Key.getKey(KeyEvent.VK_A), Key.PLAYER_ONE_LEFT);
 		Assertions.assertEquals(Key.getKey(KeyEvent.VK_S), Key.PLAYER_ONE_DOWN);
@@ -23,6 +24,7 @@ public class KeyTests
 	@DisplayName("Test player 2 key binds")
 	void testPlayerTwoBinds()
 	{
+		// Check player 2
 		Assertions.assertEquals(Key.getKey(KeyEvent.VK_I), Key.PLAYER_TWO_UP);
 		Assertions.assertEquals(Key.getKey(KeyEvent.VK_J), Key.PLAYER_TWO_LEFT);
 		Assertions.assertEquals(Key.getKey(KeyEvent.VK_K), Key.PLAYER_TWO_DOWN);

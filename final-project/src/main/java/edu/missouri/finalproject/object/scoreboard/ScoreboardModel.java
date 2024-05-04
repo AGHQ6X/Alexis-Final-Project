@@ -24,20 +24,30 @@ public class ScoreboardModel
 	
 	/**
 	 * Increment the score for player 1.
+	 * 
+	 * @return Returns this.
 	 */
-	public void incrementPlayerOneScore()
+	public ScoreboardModel incrementPlayerOneScore()
 	{
 		// Increment the score
 		this.playerOne.incrementScore();
+		
+		// Return this
+		return this;
 	}
 	
 	/**
 	 * Increment the score for player 2.
+	 * 
+	 * @return Returns this.
 	 */
-	public void incrementPlayerTwoScore()
+	public ScoreboardModel incrementPlayerTwoScore()
 	{
 		// Increment the score
 		this.playerTwo.incrementScore();
+		
+		// Return this
+		return this;
 	}
 	
 	/**
