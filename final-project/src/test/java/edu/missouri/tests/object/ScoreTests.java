@@ -8,7 +8,7 @@ import edu.missouri.finalproject.object.scoreboard.Score;
 public class ScoreTests
 {
 	@Test
-	@DisplayName("Test the Score default constructor.")
+	@DisplayName("Test the Score default constructor")
 	void testConstructor()
 	{
 		// Model created with the constructor to test
@@ -19,7 +19,7 @@ public class ScoreTests
 	}
 	
 	@Test
-	@DisplayName("Test that Score setters and getters work.")
+	@DisplayName("Test that Score setters and getters work")
 	void testSetGet()
 	{
 		// Model created with the constructor
@@ -60,7 +60,7 @@ public class ScoreTests
 	}
 	
 	@Test
-	@DisplayName("Test that Score incriments when called to.")
+	@DisplayName("Test that Score incriments when called to")
 	void testIncrementBasic()
 	{
 		// Model created with the constructor to test
@@ -89,7 +89,7 @@ public class ScoreTests
 	}
 	
 	@Test
-	@DisplayName("Test that Score digit 1 is accurate.")
+	@DisplayName("Test that Score digit 1 is accurate")
 	void testScoreDigitOne()
 	{
 		// Model created with the constructor
@@ -130,7 +130,7 @@ public class ScoreTests
 	}
 	
 	@Test
-	@DisplayName("Test that Score digit 2 is accurate.")
+	@DisplayName("Test that Score digit 2 is accurate")
 	void testScoreDigitTwo()
 	{
 		// Model created with the constructor
@@ -171,7 +171,7 @@ public class ScoreTests
 	}
 	
 	@Test
-	@DisplayName("Test that Score digit 3 is accurate.")
+	@DisplayName("Test that Score digit 3 is accurate")
 	void testScoreDigitThree()
 	{
 		// Model created with the constructor

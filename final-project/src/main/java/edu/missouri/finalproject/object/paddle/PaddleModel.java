@@ -167,6 +167,62 @@ public class PaddleModel
 	}
 	
 	/**
+	 * Set the current X position.
+	 * 
+	 * @return Return this.
+	 */
+	public PaddleModel setPosX(double value)
+	{
+		// Set the current X position
+		this.hitbox.setX(value);
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Set the current Y position.
+	 * 
+	 * @return Return this.
+	 */
+	public PaddleModel setPosY(double value)
+	{
+		// Set the current Y position
+		this.hitbox.setY(value);
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Set the current X position.
+	 * 
+	 * @return Return this.
+	 */
+	public PaddleModel setVelX(double value)
+	{
+		// Set the current X velocity
+		this.velX = value;
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Set the current Y velocity.
+	 * 
+	 * @return Return this.
+	 */
+	public PaddleModel setVelY(double value)
+	{
+		// Set the current Y velocity
+		this.velY = value;
+		
+		// Return this
+		return this;
+	}
+	
+	/**
 	 * Get the starting X position to set the position on reset.
 	 * 
 	 * @return The starting X position.

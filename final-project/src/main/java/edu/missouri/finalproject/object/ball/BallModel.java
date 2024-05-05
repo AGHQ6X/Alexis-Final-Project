@@ -13,7 +13,7 @@ public class BallModel
 	/**
 	 * The multiplier to cause an increasing speed bounce.
 	 */
-	private static final double bounceMod = 1.02;
+	private static final double bounceMod = 1.03;
 	
 	/**
 	 * The stored starting position to reset back to.
@@ -164,7 +164,7 @@ public class BallModel
 				double diff = this.hitbox.getMaxY() - rect.getMinY();
 
 				// Mid-frame bounce
-				this.hitbox.translateY(-diff);
+				this.hitbox.translateY(diff * -2.0);
 			}
 		}
 		
@@ -185,7 +185,7 @@ public class BallModel
 				double diff = this.hitbox.getMinY() - rect.getMaxY();
 
 				// Mid-frame bounce
-				this.hitbox.translateY(-diff);
+				this.hitbox.translateY(diff * -2.0);
 			}
 		}
 		
@@ -206,7 +206,7 @@ public class BallModel
 				double diff = this.hitbox.getMaxX() - rect.getMinX();
 	
 				// Mid-frame bounce
-				this.hitbox.translateX(-diff);
+				this.hitbox.translateX(diff * -2.0);
 			}
 		}
 			
@@ -227,7 +227,7 @@ public class BallModel
 				double diff = this.hitbox.getMinX() - rect.getMaxX();
 
 				// Mid-frame bounce
-				this.hitbox.translateX(-diff);
+				this.hitbox.translateX(diff * -2.0);
 			}
 		}
 	}
@@ -258,7 +258,7 @@ public class BallModel
 			double diff = this.hitbox.getMinY() - this.bound.getMinY();
 			
 			// Mid-frame bounce
-			this.hitbox.translateY(-diff);
+			this.hitbox.translateY(diff * -2.0);
 		}
 		
 		// Check if the ball needs to bounce off of the floor
@@ -275,7 +275,7 @@ public class BallModel
 			double diff = this.hitbox.getMaxY() - this.bound.getMaxY();
 
 			// Mid-frame bounce
-			this.hitbox.translateY(-diff);
+			this.hitbox.translateY(diff * -2.0);
 		}
 		
 		// Check who scored
@@ -294,6 +294,62 @@ public class BallModel
 			// By default, nobody scored
 			return 0;
 		}
+	}
+	
+	/**
+	 * Set the current X position.
+	 * 
+	 * @return Return this.
+	 */
+	public BallModel setPosX(double value)
+	{
+		// Set the current X position
+		this.hitbox.setX(value);
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Set the current Y position.
+	 * 
+	 * @return Return this.
+	 */
+	public BallModel setPosY(double value)
+	{
+		// Set the current Y position
+		this.hitbox.setY(value);
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Set the current X position.
+	 * 
+	 * @return Return this.
+	 */
+	public BallModel setVelX(double value)
+	{
+		// Set the current X velocity
+		this.velX = value;
+		
+		// Return this
+		return this;
+	}
+	
+	/**
+	 * Set the current Y velocity.
+	 * 
+	 * @return Return this.
+	 */
+	public BallModel setVelY(double value)
+	{
+		// Set the current Y velocity
+		this.velY = value;
+		
+		// Return this
+		return this;
 	}
 	
 	/**
